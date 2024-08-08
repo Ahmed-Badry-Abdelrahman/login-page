@@ -18,6 +18,8 @@ document.getElementById('submit-btn').addEventListener('click', async (event) =>
     if (emailValidation()) {
         await sendData();
     } else {
+        document.getElementById('error').classList.add('show')
+        document.getElementById('error').innerHTML = 'Invalid email or password'
         console.log('Invalid email or password');
     }
 });
@@ -46,6 +48,7 @@ async function sendData() {
             localStorage.setItem('token', data.token);
             console.log(data);
             console.log('Login successfully');
+            location.replace('../home.html')
         } else {
             console.log('Error:', response.status);
         }
